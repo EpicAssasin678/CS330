@@ -1,19 +1,22 @@
+function lab3 () {
+    var array = [];
+    var mean = 0;
+    var total = 0;
 
-var array = [];
-var mean;
+    var start_button = document.getElementById("arrayStart");
 
-    for (let index = 0; index < 5; index++) {
-        let val = Math.floor(Math.random() * 100);
-        array.push(val);
-        total += val;
-        
-        console.log(val);
-    }
+        for (let index = 0; index < 5; index++) {
+            let val = Math.floor(Math.random() * 100);
+            array.push(val);
+            total += val;
 
-var arrayOut = array.toString();
+            console.log(val);
+        }
 
-var mean = total/5;
+    var arrayOut = array.toString();
 
-document.querySelector("#arrayOut").innerHTML = "array " + arrayOut + "total " + total + "mean " + mean;
+    var mean = total/5;
 
+    document.querySelector("#arrayOut").innerHTML = "array " + arrayOut + "<br>total " + total + "<br>mean " + mean;
 
+}
