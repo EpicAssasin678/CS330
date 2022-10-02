@@ -1,6 +1,7 @@
 "use strict";
 var gl;
 var points;
+var points2; //for overlay of points 
 init();
 
 function init()
@@ -21,6 +22,8 @@ function init()
     vec2(  0.00 ,  0.75 ),
     vec2( -0.35 ,  0.45 )
     ];
+
+    
     
     //
     //  Configure WebGL
@@ -44,7 +47,7 @@ function init()
     var positionLoc = gl.getAttribLocation( program, "aPosition" );
     gl.vertexAttribPointer( positionLoc , 2, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( positionLoc );
-
+    
     render();
 };
 
@@ -52,10 +55,9 @@ function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
 
     gl.drawArrays( gl.POINTS, 0, points.length );
-    gl.drawArrays( gl.LINES, 0, points.length );
-    gl.drawArrays( gl.LINE_STRIP, 0, points.length );
-    gl.drawArrays( gl.LINE_LOOP, 0, points.length );
-    gl.drawArrays( gl.TRIANGLES, 0, points.length );
-    gl.drawArrays( gl.TRIANGLE_STRIP, 0, points.length );
+    //gl.drawArrays( gl.LINES, 0, points.length ); //
+    //gl.drawArrays( gl.LINE_STRIP, 0, points.length );
+    //gl.drawArrays( gl.LINE_LOOP, 0, points.length );
+    //gl.drawArrays( gl.TRIANGLE_STRIP, 0, points.length );
     gl.drawArrays( gl.TRIANGLE_FAN, 0, points.length );
 }

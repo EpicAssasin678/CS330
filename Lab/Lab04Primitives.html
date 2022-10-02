@@ -13,6 +13,21 @@
 Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
 
+<h1>Lab04</h1>
+<p>I do notice when uncommenting the drawArray with mode=LINE_STRIP, the 1st and last 
+  vertex do not get attached to one another. drawArray with mode=LINE_LOOP connects
+  the first and last of the vertices. Of course LINE only draws lines inbetween pairs 
+  of vertices, thus the last is disjointed from the rest. TRIANGLE_STRIP has issues 
+  with the lower-half of this render due to the fact that it is connecting triangles 
+  using context for triangle <b>a</b> using two fo the previous triangles points <b>b</b>, 
+  creating the oblique incision and other triangles from not really  rendering. TRAINGLE_FAN 
+  has it's own issues. I believe that because of relying on an initial two points and one new
+  point for context when generating a next triangle, the polygon cannot change orientation easily.
+  For example two trangles sharing just one point to make a sort of "jagged-teeth" look would 
+  be imposible as the initial point <b>p1</b> would instead connect allo other points in 
+  respect to itself. <i>This shape would be possible using TRAINGLE_STRIP however</i>. 
+</p>
+
 <script id="vertex-shader" type="x-shader/x-vertex">
 #version 300 es
 in vec4 aPosition;
@@ -31,7 +46,7 @@ out vec4 fColor;
 void
 main()
 {
-  fColor = vec4(0.7,0.8,0.2,1.0);
+  fColor = vec4(1.0,0.0,0.0,1.0);
 }
 </script>
 <script type="text/javascript" src="../Common/initShaders.js"></script>
